@@ -12,6 +12,18 @@
 header {
   font-size: 15px;
 }
+.brand-title {
+  font-size: 20px;
+  color: #fff;
+}
+.header-menu {
+  font-size: 15px;
+  color: #fff;
+}
+.header-menu:hover {
+  color: #eee;
+  text-decoration: none;
+}
 body {
   font-family: 'Open Sans', Arial, sans-serif;
   min-height: 100vh;
@@ -166,4 +178,19 @@ img {
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em,
       0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
+}
+.ingredients-content {
+  width: 400px;
+}
+.ingredients li {
+  font-size: 15px;
+  border-bottom: 1px solid #858585;
+  line-height: 30px;
+}
+.comment-img {
+  cursor: pointer;
+}
+.comment {
+  align-self: center;
+  font-size: 15px;
 }

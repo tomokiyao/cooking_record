@@ -45,6 +45,7 @@
       </div>
     </div>
   </div>
+  <div v-if="!initialized" class="loader"></div>
   <infinite-loading v-if="initialized" @infinite="infiniteHandler" spinner="spiral">
     <div slot="spinner" class="loader"></div>
     <div slot="no-more"> </div>

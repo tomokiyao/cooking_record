@@ -22,7 +22,7 @@ services:
       - db-data:/var/lib/mysql
   webpack-dev-server:
     build: .
-    command: /bin/sh -c "bin/webpack-dev-server --hot --inline"
+    command: /bin/sh -c "bin/webpack-dev-server"
     ports:
       - '3035:3035'
     environment:
