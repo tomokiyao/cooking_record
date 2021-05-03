@@ -1,0 +1,35 @@
+<div class="cooking-container" id="cooking">
+  <h1 class="text-center border-bottom py-4 font-weight-bold">料理記録</h1>
+  <br>
+  <div class="gallery">
+    <div v-for="(record, index) in cooking_records">
+      <div class="gallery-item" data-toggle="modal" :data-target="'#cooking_modal_' + index">
+        <img :src="record.image_url" class="gallery-image">
+      </div>
+
+      <div class="modal fade" :id="'cooking_modal_' + index" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed; top: 30px; right: 30px; font-size: 50px; color: #fff;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <img :src="record.image_url" class="gallery-image" alt="">
+            <div class="modal-body" style="min-height: 100px;">
+              <p class="px-3 py-3">
+                <span class="px-3 py-3 mb-3 bg-warning" style="color: #fff; border-radius: 50%;">
+                  {{ castRecipeType(record.recipe_type) }}
+                </span>
+              </p>
+              <p class="px-3 py-1" style="font-size: 15px;">{{ record.comment }}</p>
+              <p class="px-3 py-1">
+                <%= link_to "こちらのレシピへ→", style: "font-size: 15px;" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'cooking' %>

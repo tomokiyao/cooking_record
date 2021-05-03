@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  app: &app_base
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 33060:3306
+    volumes:
+      - db-data:/var/lib/mysql
+  webpack-dev-server:
+    build: .
+    command: /bin/sh -c "bin/webpack-dev-server --hot --inline"
+    ports:
+      - '3035:3035'
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    volumes:
+      - .:/app
+    depends_on:
+      - app
+volumes:
+  db-data:
+    driver: local

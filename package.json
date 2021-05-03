@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.3.0",
+    "axios": "^0.21.1",
+    "bootstrap": "4.4.1",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "turbolinks": "^5.2.0",
+    "vue": "^2.6.12",
+    "vue-axios": "^3.2.4",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
+}

@@ -1,0 +1,68 @@
+@import '~bootstrap/scss/bootstrap';
+@import '@fortawesome/fontawesome-free';
+
+:root {
+  font-size: 10px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+header {
+  font-size: 15px;
+}
+
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #fafafa;
+  color: #262626;
+  padding-bottom: 3rem;
+}
+
+img {
+  display: block;
+}
+
+.cooking-container {
+  max-width: 93.5rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Gallery Section */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1rem -1rem;
+  padding-bottom: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  flex: 1 0 22rem;
+  margin: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@supports (display: grid) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    grid-gap: 2rem;
+  }
+  .gallery-item,
+  .gallery {
+    width: auto;
+    margin: 0;
+  }
+}
