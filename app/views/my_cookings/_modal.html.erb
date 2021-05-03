@@ -1,0 +1,21 @@
+<div class="modal fade" :id="'<%= modal_name %>_' + index" tabindex="-1" role="dialog" aria-hidden="true">
+  <button type="button" class="close modal-close-btn" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <img :src="record.image_url" class="gallery-image" alt="">
+      <div class="modal-body">
+        <p class="px-3 py-3">
+          <span class="px-3 py-3 mb-3 bg-warning tag">
+            {{ castRecipeType(record.recipe_type) }}
+          </span>
+        </p>
+        <p class="px-3 py-1 comment">{{ record.comment }}</p>
+        <p class="px-3 py-1">
+          <%= link_to "こちらのレシピへ→", class: "recipe-link" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

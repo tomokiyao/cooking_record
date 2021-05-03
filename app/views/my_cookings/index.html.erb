@@ -1,35 +1,55 @@
 <div class="cooking-container" id="cooking">
   <h1 class="text-center border-bottom py-4 font-weight-bold">料理記録</h1>
   <br>
-  <div class="gallery">
-    <div v-for="(record, index) in cooking_records">
-      <div class="gallery-item" data-toggle="modal" :data-target="'#cooking_modal_' + index">
-        <img :src="record.image_url" class="gallery-image">
-      </div>
-
-      <div class="modal fade" :id="'cooking_modal_' + index" tabindex="-1" role="dialog" aria-hidden="true">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed; top: 30px; right: 30px; font-size: 50px; color: #fff;">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <img :src="record.image_url" class="gallery-image" alt="">
-            <div class="modal-body" style="min-height: 100px;">
-              <p class="px-3 py-3">
-                <span class="px-3 py-3 mb-3 bg-warning" style="color: #fff; border-radius: 50%;">
-                  {{ castRecipeType(record.recipe_type) }}
-                </span>
-              </p>
-              <p class="px-3 py-1" style="font-size: 15px;">{{ record.comment }}</p>
-              <p class="px-3 py-1">
-                <%= link_to "こちらのレシピへ→", style: "font-size: 15px;" %>
-              </p>
-            </div>
+  <ul class="nav nav-tabs d-flex justify-content-around border-bottom py-4 nav-text">
+    <li class="nav-item">
+      <a href="#main_dish_modal" class="active" data-toggle="tab" style="color: #858585;">主菜</a>
+    </li>
+    <li class="nav-item">
+      <a href="#side_dish_modal" class="" data-toggle="tab" style="color: #858585;">副菜</a>
+    </li>
+    <li class="nav-item">
+      <a href="#soup_modal" class="" data-toggle="tab" style="color: #858585;">スープ</a>
+    </li>
+  </ul>
+  <br>
+  <div class="tab-content">
+    <div id="main_dish_modal" class="tab-pane active">
+      <div class="gallery">
+        <div v-for="(record, index) in main_dish_records">
+          <div class="gallery-item" data-toggle="modal" :data-target="'#main_dish_modal_' + index">
+            <img :src="record.image_url" class="gallery-image">
           </div>
+          <%= render partial: "modal", locals: { modal_name: "main_dish_modal" } %>
+        </div>
+      </div>
+    </div>
+    <div id="side_dish_modal" class="tab-pane">
+      <div class="gallery">
+        <div v-for="(record, index) in side_dish_records">
+          <div class="gallery-item" data-toggle="modal" :data-target="'#side_dish_modal_' + index">
+            <img :src="record.image_url" class="gallery-image">
+          </div>
+          <%= render partial: "modal", locals: { modal_name: "side_dish_modal" } %>
+        </div>
+      </div>
+    </div>
+    <div id="soup_modal" class="tab-pane">
+      <div class="gallery">
+        <div v-for="(record, index) in soup_records">
+          <div class="gallery-item" data-toggle="modal" :data-target="'#soup_modal_' + index">
+            <img :src="record.image_url" class="gallery-image">
+          </div>
+          <%= render partial: "modal", locals: { modal_name: "soup_modal" } %>
         </div>
       </div>
     </div>
   </div>
+  <infinite-loading v-if="initialized" @infinite="infiniteHandler" spinner="spiral">
+    <div slot="spinner" class="loader"></div>
+    <div slot="no-more"> </div>
+    <div slot="no-results"> </div>
+  </infinite-loading>
 </div>
 
 <%= javascript_pack_tag 'cooking' %>
