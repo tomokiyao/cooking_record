@@ -84,6 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
           this.bookmark_records = response.data;
         });
       },
+      firstLineEachNum(records) {
+        if (records.length < 3 || !records.length === 0) {
+          return 3 - records.length;
+        } else {
+          return 0;
+        }
+      },
     },
   });
 });

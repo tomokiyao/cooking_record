@@ -25,6 +25,11 @@
           </div>
           <%= render partial: "modal", locals: { modal_name: "main_dish_modal" } %>
         </div>
+        <div v-for="n in firstLineEachNum(main_dish_records)" :key="n">
+          <div class="gallery-item">
+            <div class="gallery-image"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="side_dish" class="tab-pane">
@@ -34,6 +39,11 @@
             <img :src="record.image_url" class="gallery-image">
           </div>
           <%= render partial: "modal", locals: { modal_name: "side_dish_modal" } %>
+        </div>
+        <div v-for="n in firstLineEachNum(side_dish_records)" :key="n">
+          <div class="gallery-item">
+            <div class="gallery-image"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -45,6 +55,11 @@
           </div>
           <%= render partial: "modal", locals: { modal_name: "soup_modal" } %>
         </div>
+        <div v-for="n in firstLineEachNum(soup_records)" :key="n">
+          <div class="gallery-item">
+            <div class="gallery-image"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="bookmark" class="tab-pane">
@@ -54,6 +69,11 @@
             <img :src="record.image_url" class="gallery-image">
           </div>
           <%= render partial: "modal", locals: { modal_name: "bookmark_modal" } %>
+        </div>
+        <div v-for="n in firstLineEachNum(bookmark_records)" :key="n">
+          <div class="gallery-item">
+            <div class="gallery-image"></div>
+          </div>
         </div>
       </div>
     </div>
