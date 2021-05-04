@@ -75,26 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
         axios
           .post('/api/internal/bookmarks', { bookmark: bookmarkParams })
           .then((response) => {
-            this.bookmark_records = response.data.bookmarks;
+            this.bookmark_records = response.data;
             record.bookmark = true;
-            // const bookmarkImageUrls = this.bookmark_records.map(
-            //   (bookmark) => bookmark.image_url
-            // );
-            // console.log();
-            // this.$set(this.main_dish_records[index], 'bookmark', true);
-
-            // this.main_dish_records.splice(index, 1, { bookmark: true });
-            // this.$nextTick(function() {
-            //   this.main_dish_records.splice(index, 1, { bookmark: true });
-            // });
-            // console.log(record);
-            // record.bookmark = true;
-            // console.log(record);
           });
       },
       fetchBookmarkRecords() {
         axios.get('/api/internal/bookmarks').then((response) => {
-          this.bookmark_records = response.data.bookmarks;
+          this.bookmark_records = response.data;
         });
       },
     },
