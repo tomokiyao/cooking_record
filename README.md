@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## SetUp
 
-Things you may want to cover:
+* 下記を順に実行してください。
 
-* Ruby version
+```
+$ docker-compose build
+```
+```
+$ docker-compose run --rm app bash -c "bundle exec rails db:create db:migrate"
+```
+```
+$ docker-compose run --rm app bash -c "yarn install"
+```
+```
+$ docker-compose up
+```
 
-* System dependencies
+## 画面URL
 
-* Configuration
+* 料理記録画面
 
-* Database creation
+　http://localhost:3000/my_cookings
+ 
+* レシピ画面
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+　http://localhost:3000/recipes
