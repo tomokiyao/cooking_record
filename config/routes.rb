@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :internal do
       resources :fetch_cooking_records, only: :index
+      resources :bookmarks, only: [:index, :create]
     end
   end
 end

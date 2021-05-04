@@ -9,7 +9,18 @@ module Api
         http.use_ssl = true
         req = Net::HTTP::Get.new(uri)
         res = http.request(req)
-        render json: JSON.parse(res.body), status: 200
+        render json: rebuilding(res), status: 200
+      end
+
+      private
+
+      def rebuilding(res)
+        json = JSON.parse(res.body)
+        bookmark_image_urls = Bookmark.pluck(:image_url)
+        json["cooking_records"].map do |h|
+          h["bookmark"] = bookmark_image_urls.include?(h["image_url"])
+        end
+        json
       end
     end
   end

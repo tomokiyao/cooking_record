@@ -3,18 +3,21 @@
   <br>
   <ul class="nav nav-tabs d-flex justify-content-around border-bottom py-4 nav-text">
     <li class="nav-item">
-      <a href="#main_dish_modal" class="active" data-toggle="tab" style="color: #858585;">主菜</a>
+      <a href="#main_dish" class="active" data-toggle="tab" style="color: #858585;">主菜</a>
     </li>
     <li class="nav-item">
-      <a href="#side_dish_modal" class="" data-toggle="tab" style="color: #858585;">副菜</a>
+      <a href="#side_dish" data-toggle="tab" style="color: #858585;">副菜</a>
     </li>
     <li class="nav-item">
-      <a href="#soup_modal" class="" data-toggle="tab" style="color: #858585;">スープ</a>
+      <a href="#soup" data-toggle="tab" style="color: #858585;">スープ</a>
+    </li>
+    <li class="nav-item">
+      <a href="#bookmark" data-toggle="tab" style="color: #858585;">保存済み</a>
     </li>
   </ul>
   <br>
   <div class="tab-content">
-    <div id="main_dish_modal" class="tab-pane active">
+    <div id="main_dish" class="tab-pane active">
       <div class="gallery">
         <div v-for="(record, index) in main_dish_records">
           <div class="gallery-item" data-toggle="modal" :data-target="'#main_dish_modal_' + index">
@@ -24,7 +27,7 @@
         </div>
       </div>
     </div>
-    <div id="side_dish_modal" class="tab-pane">
+    <div id="side_dish" class="tab-pane">
       <div class="gallery">
         <div v-for="(record, index) in side_dish_records">
           <div class="gallery-item" data-toggle="modal" :data-target="'#side_dish_modal_' + index">
@@ -34,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div id="soup_modal" class="tab-pane">
+    <div id="soup" class="tab-pane">
       <div class="gallery">
         <div v-for="(record, index) in soup_records">
           <div class="gallery-item" data-toggle="modal" :data-target="'#soup_modal_' + index">
@@ -44,7 +47,18 @@
         </div>
       </div>
     </div>
+    <div id="bookmark" class="tab-pane">
+      <div class="gallery">
+        <div v-for="(record, index) in bookmark_records">
+          <div class="gallery-item" data-toggle="modal" :data-target="'#bookmark_modal_' + index">
+            <img :src="record.image_url" class="gallery-image">
+          </div>
+          <%= render partial: "modal", locals: { modal_name: "bookmark_modal" } %>
+        </div>
+      </div>
+    </div>
   </div>
+  
   <div v-if="!initialized" class="loader"></div>
   <infinite-loading v-if="initialized" @infinite="infiniteHandler" spinner="spiral">
     <div slot="spinner" class="loader"></div>
